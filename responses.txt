@@ -1,0 +1,16 @@
+json = '{
+    "Cart_id": "C14253"
+    "Category": "Dine-in OR Takeaway",
+    "Table_No": "D12",
+    "Persons": 3,
+    "Cust_id": 1234,
+    "Cash": "Cash or Credit",
+    "Status": "To Kitchen OR ON HOLD"
+    "Section": "Club House",
+    "Cusines": "Fast Food",
+    "Food": {
+        "id": [12,41,22],
+        "Quantity": [1,3,2]
+    }
+    "Bill": 5200
+}'
