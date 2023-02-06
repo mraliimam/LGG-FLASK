@@ -29,13 +29,24 @@ from datetime import datetime, date
 class House(db.Model):
     id = db.Column(db.Integer(), primary_key = True)
     Name = db.Column(db.String(), nullable = False)
-    # Section = db.Column(db.String(), nullable = False)
+    Kitchen = db.Column(db.String(), db.ForeignKey('kitchen.Name'))
+    kn = db.relationship('Kitchen')
 
+class Kitchen(db.Model):
+    Name = db.Column(db.String(), primary_key = True)
+
+class Kitchen_Cart(db.Model):
+    id = db.Column(db.Integer(), primary_key = True)
+    Kitchen = db.Column(db.String(), db.ForeignKey('kitchen.Name'))
+    kn = db.relationship('Kitchen')
+    Food = db.Column(db.String(), db.ForeignKey('food.id'))
+    fd = db.relationship('Food')
+    Status = db.Column(db.String(), nullable = False)
 
 class Tables(db.Model):
     id = db.Column(db.Integer(), primary_key = True)
     Name = db.Column(db.String(), nullable = False)
-    House = db.Column(db.String(), db.ForeignKey('house.id'))
+    House = db.Column(db.String(), db.ForeignKey('house.Name'))
     hs = db.relationship('House')
 
 
@@ -48,7 +59,7 @@ class Customer(db.Model):
 
 
 class Food(db.Model):
-    id = db.Column(db.String(), primary_key= True)
+    id = db.Column(db.Integer(), primary_key= True)
     Name = db.Column(db.String(), nullable = False)
     Making_Price = db.Column(db.Integer(), nullable = False)
     Sale_Price = db.Column(db.Integer(), nullable = False)
@@ -60,14 +71,16 @@ class House_Food(db.Model):
     id = db.Column(db.Integer(), primary_key = True)
     Category = db.Column(db.String(), db.ForeignKey('food.Category'))
     fd = db.relationship('Food')
-    House = db.Column(db.String(), db.ForeignKey('house.id'))
+    House = db.Column(db.String(), db.ForeignKey('house.Name'))
     hs = db.relationship('House')
     
 
 class Cart(db.Model):
-    Order_No = db.Column(db.String(), primary_key = True)
+    Order_No = db.Column(db.Integer(), primary_key = True)
     Table = db.Column(db.String(), db.ForeignKey('tables.Name'))
     tbl = db.relationship('Tables')
+    House = db.Column(db.String(), db.ForeignKey('house.Name'))
+    hse = db.relationship('House')
     Persons = db.Column(db.Integer(), nullable = False, default = 1)
     Member = db.Column(db.String(), db.ForeignKey('customer.id'))
     mem = db.relationship('Customer')
@@ -83,19 +96,7 @@ class Cart_Food(db.Model):
     cart_ref = db.relationship('Cart')
     Food = db.Column(db.String(), db.ForeignKey('food.id'))
     food_ref = db.relationship('Food')
-    Qauntity = db.Column(db.Integer(), nullable = False)
-
-class Kitchen(db.Model):
-    id = db.Column(db.Integer(), primary_key = True)
-    House = db.Column(db.String(), db.ForeignKey('house.id'))
-    hs = db.relationship('House')
-
-class Kitchen_Cart_Food(db.Model):
-    id = db.Column(db.Integer(), primary_key = True)
-    Kitchen = db.Column(db.Integer(), db.ForeignKey('kitchen.id'))
-    hs = db.relationship('Kitchen')
-    Cart_Food = db.Column(db.String(), db.ForeignKey('cart__food.id'))
-    hs = db.relationship('Cart_Food')
-
+    Qauntity = db.Column(db.Integer(), nullable = False, default = 0)
+    Status = db.Column(db.Boolean, nullable = False, default = False)
 
 db.create_all()

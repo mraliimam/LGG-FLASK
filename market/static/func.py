@@ -19,7 +19,7 @@ def dbs2dict(rows):
             dic[i[0]].append(i[1])
     return dic
 
-def GetOrder():
+def GetOrder(ids):
 
     #=========== Retreive List of Members ====================================================
     rows = db.engine.execute('select id from customer;')
@@ -41,7 +41,7 @@ def GetOrder():
     result1 = dic1
 
     #============ List of Table order by House Sections ========================================
-    rows2 = db.engine.execute('select h.Name,t.Name from tables t join house h on h.id = t.House;')
+    rows2 = db.engine.execute('select Name, House from Tables;')
     rows2 = rows2.fetchall()
     result2 = dbs2dict(rows2)
     
@@ -50,6 +50,14 @@ def GetOrder():
                                 hf.category = f.category join house h on h.id = hf.house;''')
     rows3 = rows3.fetchall()
     result3 = dbs2dict(rows3)
+
+    #============ List of Cart Items and Quantity ==============================================
+    if(ids == None):
+        result4 = {}
+    
+    else:
+        rows4 = db.engine.execute('''select  ''')
+        pass
 
     #=========== Combining the responses into a list ===========================================
     # last = [result,result1,result2, result3]

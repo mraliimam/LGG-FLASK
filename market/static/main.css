@@ -1,0 +1,79 @@
+body{
+    background-color: #B5D43B;
+    color: black;
+    min-height: 100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+.sec{
+    margin: 10px;
+}
+
+.c-box{
+    padding-top: 40px;
+    text-align: center;
+}
+
+.mid-sec{
+    padding: 3% 10% 5%;
+}
+
+#dropdownMenuButton{
+    margin-top: 25px;
+}
+
+/* .btn1{
+    border-width: 2px;
+    border-color: black;
+}
+ */
+
+ 
+.card{
+    width: 15rem; 
+    border-radius: 100px; 
+    text-align: center;
+    margin: auto;
+}
+
+/* .tab-1{
+    padding: 0% 5% 0%;
+} */
+
+
+#footer{
+    padding: 5%;
+    text-align: center;
+    background-color: lightsalmon;
+    
+}
+
+.container-fluid {
+    padding: 3% 5% 0%;
+}
+
+.navbar {
+    padding:  0 0 4rem;
+}
+
+.navbar-brand {
+    font-family: 'Ubuntu';
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.nav-item {
+    padding: 0 18px;
+    color: rgb(207, 207, 207);
+}
+
+#medcount{
+    width: 50px;
+    text-align: center;
+}
+
+.dropdown-menu{
+    max-height: 280px;
+    overflow-y: auto;
+}

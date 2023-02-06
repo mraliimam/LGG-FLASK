@@ -41,3 +41,12 @@ from flask import flash
 #     market = FloatField(label=  'Market Price', validators=[DataRequired()])
 #     subsidy = FloatField(label = 'Subsidy', validators=[DataRequired()])
 #     submit = SubmitField(label = 'Submit Medicine')
+
+
+class OrderForm(FlaskForm):
+    cust =  StringField(label = 'Membership ID', validators=[DataRequired(), Length(min = 4, max=4)])
+    otype = SelectField(label = 'Order Type', validators=[DataRequired()],
+                        choices=['Dine-In', 'Takeaway'])
+    table = SelectField(label = 'Table', choices=[i.Name for i in Tables.query.all()])
+    person = IntegerField(label = 'No. of Person', validators=[DataRequired()])
+    submit = SubmitField(label = 'Submit')
