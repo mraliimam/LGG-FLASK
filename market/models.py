@@ -48,9 +48,10 @@ class Tables(db.Model):
     Name = db.Column(db.String(), nullable = False)
     House = db.Column(db.String(), db.ForeignKey('house.Name'))
     hs = db.relationship('House')
+    Status = db.Column(db.Boolean(), nullable = False, default = False)
 
 
-class Customer(db.Model):
+class Member(db.Model):
     id = db.Column(db.String(), primary_key = True)
     Name = db.Column(db.String(), nullable = False)
     Type = db.Column(db.String(), nullable = False)
@@ -76,14 +77,15 @@ class House_Food(db.Model):
     
 
 class Cart(db.Model):
-    Order_No = db.Column(db.Integer(), primary_key = True)
+    Order_No = db.Column(db.String(), primary_key = True)
     Table = db.Column(db.String(), db.ForeignKey('tables.Name'))
     tbl = db.relationship('Tables')
     House = db.Column(db.String(), db.ForeignKey('house.Name'))
     hse = db.relationship('House')
     Persons = db.Column(db.Integer(), nullable = False, default = 1)
-    Member = db.Column(db.String(), db.ForeignKey('customer.id'))
-    mem = db.relationship('Customer')
+    OrderType = db.Column(db.String(), nullable = False)
+    Member = db.Column(db.String(), db.ForeignKey('member.id'))
+    mem = db.relationship('Member')
     Cash = db.Column(db.Boolean(), nullable = False, default = True)
     Status = db.Column(db.String(), nullable = False)
     Date = db.Column(db.Date(), nullable = False, default = date.today())
@@ -99,4 +101,4 @@ class Cart_Food(db.Model):
     Qauntity = db.Column(db.Integer(), nullable = False, default = 0)
     Status = db.Column(db.Boolean, nullable = False, default = False)
 
-db.create_all()
+# db.create_all()

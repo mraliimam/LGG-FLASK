@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Order Page
+{% endblock %}
+
+{% block content %}
+
+  <div class = 'container'>
+    <h1>Welcome, Mr. Ali Imam</h1>
+    <div class="glass">
+    
+        <form method = 'post' class = 'form-register' style = 'color: whitesmoke'>
+            
+            <div class="row">
+
+                <div class="col form-group">
+                    <label for="formSelect">Tabel Selection</label>
+                    <select class="form-control" id="formSelect" required>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                </div>
+
+                <div class="col">
+                    <h5>Persons</h5>
+                    <input class = 'form-control' type="number" placeholder="No. of Persons" required>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <!-- <div class="col-md-4">
+                    Nothing
+                </div> -->
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <a id = 't1'>
+                                Nothing
+                            </a>                
+                        </div>
+                  </div>
+                </div>
+
+                  <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <a id = 't2'>
+                                Nothing 2
+                            </a>                
+                        </div>
+                  </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <a id = 't3'>
+                                Nothing 3
+                            </a>                
+                        </div>
+                  </div>
+                  </div>
+            </div>
+
+            <br>
+
+            <div class="row" id = 't-1' style="display: none;">
+                <table class="table">
+                    <thead>
+                        <th>col-1</th>
+                        <th>col-1</th>
+                        <th>col-1</th>
+                    </thead>
+                </table>
+            </div>
+
+            <div class="row"  id = 't-2' style="display: none;">
+                <table class="table">
+                    <thead>
+                        <th>col-2</th>
+                        <th>col-2</th>
+                        <th>col-2</th>
+                    </thead>
+                </table>
+
+            </div>
+
+            <div class="row"  id = 't-3' style="display: none;">
+
+                <table class="table">
+                    <thead>
+                        <th>col-3</th>
+                        <th>col-3</th>
+                        <th>col-3</th>
+                    </thead>
+                </table>
+
+            </div>
+
+
+        </form>
+
+    </div>
+  </div>
+        
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+
+$(document).ready(function(){
+  $("#t1").click(function(){
+    $("#t-1").show();
+    $("#t-2").hide();
+    $("#t-3").hide();
+  });
+  $("#t2").click(function(){
+    $("#t-2").show();
+    $("#t-1").hide();
+    $("#t-3").hide();
+  });
+  $("#t3").click(function(){
+    $("#t-3").show();
+    $("#t-1").hide();
+    $("#t-2").hide();
+  });
+});
+
+  </script>
+
+
+{% endblock %}

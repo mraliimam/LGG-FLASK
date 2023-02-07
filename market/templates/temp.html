@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="card-group">
+        <div class="card">
+          <div class="card-header">Table 1</div>
+          <div class="card-body">
+            <button class="btn btn-primary btn-block" id="table1-btn">Show Table 1 </button>
+            <table class="table table-bordered" id="table1" style="display: none;">
+              <!-- Table 1 content -->
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">Table 2</div>
+          <div class="card-body">
+            <button class="btn btn-primary btn-block" id="table2-btn"> Show Table 2 </button>
+            <table class="table table-bordered" id="table2" style="display: none;">
+              <!-- Table 2 content -->
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">Table 3</div>
+          <div class="card-body">
+            <button class="btn btn-primary btn-block" id="table3-btn"> Show Table 3 </button>
+            <table class="table table-bordered" id="table3" style="display: none;">
+              <!-- Table 3 content -->
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">Table 4</div>
+          <div class="card-body">
+            <button class="btn btn-primary btn-block" id="table4-btn"> Show Table 4 </button>
+            <table class="table table-bordered" id="table4" style="display: none;">
+              <!-- Table 4 content -->
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <script>
+        $("#table1-btn").click(function() {
+          $("#table1").toggle();
+        });
+        $("#table2-btn").click(function() {
+          $("#table2").toggle();
+        });
+        $("#table3-btn").click(function() {
+          $("#table3").toggle();
+        });
+        $("#table4-btn").click(function() {
+          $("#table4").toggle();
+        });
+      </script>
+      
+      
+      <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+</body>
+</html>

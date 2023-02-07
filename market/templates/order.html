@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Order Page
+{% endblock %}
+
+{% block content %}
+
+  <div class = 'container'>
+    <div class="glass">
+    
+        <form method = 'post' class = 'form-register' style = 'color: whitesmoke'>
+        
+            <div class="row">
+            <div class="col-6">
+                
+                <h2> House Selection </h2>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-3 col-sm-1 form-check form-check-inline">
+                        <input class="form-check-input tile-input" type="radio" name="House" id="inlineRadio1" value="Club House" required>
+                        <label class="form-check-label tile-label" for="inlineRadio1">Club House</label>
+                    </div>
+                    <div class="col-md-3 col-sm-1 form-check form-check-inline">
+                        <input class="form-check-input tile-input" type="radio" name="House" id="inlineRadio2" value="Player's Lounge">
+                        <label class="form-check-label tile-label" for="inlineRadio2">Player's Lounge</label>
+                    </div>
+                    <div class="col-md-3 col-sm-1 form-check form-check-inline">
+                        <input class="form-check-input tile-input" type="radio" name="House" id="inlineRadio3" value="Front Lawn">
+                        <label class="form-check-label tile-label" for="inlineRadio3">Front Lawn</label>                    
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-3 col-sm-1 form-check form-check-inline">
+                        <input class="form-check-input tile-input" type="radio" name="House" id="inlineRadio4" value="19th Hole Cafe">
+                        <label class="form-check-label tile-label" for="inlineRadio4">19th Hole Cafe</label>
+                    </div>
+                    <div class="col-md-3 col-sm-1 form-check form-check-inline">
+                        <input class="form-check-input tile-input" type="radio" name="House" id="inlineRadio5" value="BBQ Garden">
+                        <label class="form-check-label tile-label" for="inlineRadio5">BBQ Garden</label>
+                    </div>
+                    <div class="col-md-3 col-sm-1 form-check form-check-inline">
+                        <input class="form-check-input tile-input" type="radio" name="House" id="inlineRadio6" value="Lack Deck">
+                        <label class="form-check-label tile-label" for="inlineRadio6">Lack Deck</label>                    
+                    </div>
+                </div>
+               
+            </div>
+            <div class="col-6">
+                <h3>              
+                    Order Information
+                </h3>
+                <!-- hidden tag -->
+                <br>
+                
+                <div class="row">
+                    <div class="col">
+                        Order No: 
+                        <input type="text" name="Order_No" class="form-control" value="{{ids}}" readonly>
+                    </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                    <div class="col form-check" style="margin-left: 15px;">
+                        <input class="form-check-input" type="radio" name="OrderType" id="Radio1" value="Dine-In" required>
+                        <label class="form-check-label" for="Radio1">
+                            Dine-In
+                        </label>
+                    </div>                    
+                    <div class="col form-check">
+                        <input class="form-check-input" type="radio" name="OrderType" id="Radio2" value="Takeaway">
+                        <label class="form-check-label" for="Radio2">
+                            Takeaway
+                        </label>
+                    </div>
+                    
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col">
+                        <input id = 'memId' name = 'Member' type="text" placeholder="Membership ID" class="form-control" required>
+                    </div>
+                </div>
+                <br>
+                
+                <br>
+
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary btn-md">Validate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+
+    </div>
+  </div>
+          
+
+
+{% endblock %}
