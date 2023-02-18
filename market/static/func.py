@@ -2,6 +2,15 @@ from market import db
 import json
 from market import models
 
+def con1(item):
+    item = item[1:-1]
+    item = item.replace("'", '')
+    #item = item.replace(" ", '')
+    item = item.split(', ')
+    item = list(item)
+
+    return item
+
 def row2dict(row):
     d = {}
     for column in row.__table__.columns:

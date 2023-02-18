@@ -7,131 +7,123 @@
 {% block content %}
 
   <div class = 'container'>
-    <h1>Welcome, Mr. Ali Imam</h1>
+    <h1>Welcome, Membership ID: {{mem}}</h1>
     <div class="glass">
-    
-        <form method = 'post' class = 'form-register' style = 'color: whitesmoke'>
+
+            {% if oform.otype.data != 'Takeaway' %}
+            <form method="post">
+                <div class="row" style="display: flex; justify-content: center;">
+                    <div class="col-3">
+                        {{ oform.table.label }}
+                        {{ oform.table(class = 'form-control') }}
+                    </div>
+
+                    <div class="col-3">
+                        {{ oform.persons.label }}
+                        {{ oform.persons(class = 'form-control', placeholder = 'No of Persons') }}
+                    </div>            
+                </div>
+                <br>
+                {% if not tflag %}
+                <div style="display: flex; justify-content: center;">
+                    {{ oform.submit(class = 'btn btn-success') }}
+                </div>
+                {%endif%}
+            </form>
+            {%endif%}
+
+            <br>
+
+            <h3>House Categories</h3>
+            <br>
             
-            <div class="row">
-
-                <div class="col form-group">
-                    <label for="formSelect">Tabel Selection</label>
-                    <select class="form-control" id="formSelect" required>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
+            <div class="row">               
+                {% for hse in house %}
+                <div class="col-md-3 card-1">
+                    <div id = '{{hse.id}}' class="card category">
+                        <div class="card-body">
+                            <a>
+                                {{hse.Category}}
+                            </a>                
+                        </div>
+                  </div>
                 </div>
-
-                <div class="col">
-                    <h5>Persons</h5>
-                    <input class = 'form-control' type="number" placeholder="No. of Persons" required>
-                </div>
+                {%endfor%}
             </div>
-
+            
+            <br>
             <br>
 
-            <div class="row">
-                <!-- <div class="col-md-4">
-                    Nothing
-                </div> -->
+            {% for hs in house%}
+            <div class="tbls" id = 'tbls-{{hs.id}}' style="display: none;">
+                <h4>{{hs.Category}}</h4>
 
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <a id = 't1'>
-                                Nothing
-                            </a>                
-                        </div>
-                  </div>
-                </div>
+                <table class="table table-hover">
+                    <thead>
+                        {% for key in foodkeys %}
 
-                  <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <a id = 't2'>
-                                Nothing 2
-                            </a>                
-                        </div>
-                  </div>
-                  </div>
+                            {%if key != 'Category'%}
+                            <th>{{key}}</th>
+                            {%endif%}
+                            
+                            {%endfor%}
+                        
+                        <th>Quantity</th>
+                        <th>Actions</th>
+                        
+                    </thead>
+                    <tbody>
+                        {% for record in foodTable %}
 
-                  <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <a id = 't3'>
-                                Nothing 3
-                            </a>                
-                        </div>
-                  </div>
-                  </div>
+                            {% if record.Category == hs.Category %}
+                            <tr>
+                            <td>{{ record.id }}</td>
+                            <td>{{ record.Name }}</td>
+                            <td>{{ record.Sale_Price }}</td>
+                            
+                            <td colspan="2">
+                                <form method = 'post' class = 'form-register'>
+                                <!-- <label for="Quantity">Quantity</label> -->
+                                <input type="hidden" id = "food{{record.id}}" name="food" value="{{ record }}">
+                                <input type="hidden" id = "category{{record.id}}" name="category" value = "{{ hs.Category }}">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <input class = "form-control" type="number" name="Quantity" placeholder="Quantity" id="{{record.id}}">
+                                    </div>
+                                    <div class="col-8" style="justify-content: center; display: flex;">
+                                        <button class="btn btn-success" type="submit">Add to Cart</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </td>                        
+                            </tr>
+
+                            {% endif %}
+                        {%endfor%}
+                    </tbody>
+                </table>
             </div>
-
+            {%endfor%}
             <br>
-
-            <div class="row" id = 't-1' style="display: none;">
-                <table class="table">
-                    <thead>
-                        <th>col-1</th>
-                        <th>col-1</th>
-                        <th>col-1</th>
-                    </thead>
-                </table>
+            <div style = "display: flex; justify-content: right;">
+                <a class = "btn btn-lg btn-warning" href="{{ url_for('cart_page', cart = cart) }}">Go to Cart</a>
             </div>
-
-            <div class="row"  id = 't-2' style="display: none;">
-                <table class="table">
-                    <thead>
-                        <th>col-2</th>
-                        <th>col-2</th>
-                        <th>col-2</th>
-                    </thead>
-                </table>
-
-            </div>
-
-            <div class="row"  id = 't-3' style="display: none;">
-
-                <table class="table">
-                    <thead>
-                        <th>col-3</th>
-                        <th>col-3</th>
-                        <th>col-3</th>
-                    </thead>
-                </table>
-
-            </div>
-
-
-        </form>
-
     </div>
   </div>
         
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script>
-
-$(document).ready(function(){
-  $("#t1").click(function(){
-    $("#t-1").show();
-    $("#t-2").hide();
-    $("#t-3").hide();
-  });
-  $("#t2").click(function(){
-    $("#t-2").show();
-    $("#t-1").hide();
-    $("#t-3").hide();
-  });
-  $("#t3").click(function(){
-    $("#t-3").show();
-    $("#t-1").hide();
-    $("#t-2").hide();
-  });
-});
-
-  </script>
-
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".category").click(function() {
+                var selectedId = $(this).attr("id");
+                $(".tbls").hide();
+                $("#tbls-" + selectedId).show();
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $("#tbls-{{cat}}").show();
+        });
+    </script>
 {% endblock %}

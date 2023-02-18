@@ -31,10 +31,10 @@ from market.models import Food, Tables, House_Food
 
 li = {"Club House":14, "Player's Lounge":12, "Front Lawn":20, "19th Hole Cafe":15, "BBQ Garden":14, "Lack Deck":10}
 
-for i in li:
-    tbl = Tables(Name = "Takeaway", House = i)
-    db.session.add(tbl)
-    db.session.commit()
+# for i in li:
+#     tbl = Tables(Name = "Takeaway", House = i)
+#     db.session.add(tbl)
+#     db.session.commit()
 
 for i in li:
     l = 1
@@ -205,3 +205,21 @@ print("Done")
 
 
 #======================================================================
+
+kiList = ['Club House', "Player's Lounge", '19th Hole Cafe', 'BBQ Garden']
+
+for k in kiList:
+    ki = Kitchen(
+        Name = k
+    )
+    db.session.add(ki)
+    db.session.commit()
+
+
+for k in kiList:
+    hs = House(
+        Name = k,
+        Kitchen = k
+    )
+    db.session.add(hs)
+    db.session.commit()

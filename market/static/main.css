@@ -31,47 +31,21 @@ body{
     border-radius: 4px;
     cursor: pointer;
 }
-  
-.tile-input:checked + .tile-label {
-    border: 2px solid #007bff;
+
+.card-1{
+    margin-top: 5px;
 }
 
-.sec{
-    margin: 10px;
-}
-
-.c-box{
-    padding-top: 40px;
-    text-align: center;
-}
-
-.mid-sec{
-    padding: 3% 10% 5%;
-}
-
-#dropdownMenuButton{
-    margin-top: 25px;
-}
-
-/* .btn1{
-    border-width: 2px;
-    border-color: black;
-}
- */
-
- 
 .card{
+    margin-top: 5px;
     width: 10rem; 
     height: 5rem;
     border-radius: 10px; 
     text-align: center;
     margin: auto;
+    background-color: aliceblue;
+    opacity: 0.7;
 }
-
-/* .tab-1{
-    padding: 0% 5% 0%;
-} */
-
 
 #footer{
     padding: 5%;
@@ -99,12 +73,6 @@ body{
     color: rgb(207, 207, 207);
 }
 
-#medcount{
-    width: 50px;
-    text-align: center;
-}
-
-.dropdown-menu{
-    max-height: 280px;
-    overflow-y: auto;
-}
+.tile-input:checked + .tile-label {
+    border: 2px solid #007bff;
+  }

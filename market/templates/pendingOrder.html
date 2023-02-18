@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Order Page
+{% endblock %}
+
+{% block content %}
+
+  <div class = 'container'>
+    <div class="glass">
+    
+        <br>
+
+        <div>
+            <h4>Pending Orders</h4>
+            <br>
+                <table class="table table-hover" style="text-align: center;">
+                    <thead>
+                        {% for k in key %}
+
+                            {%if k != 'tflag'%}
+                                <th>{{k}}</th>
+                            {%endif%}
+                            
+                        {%endfor%}                
+                            <th colspan="2">Actions</th>
+                        
+                    </thead>
+                    <tbody>
+                        {% for record in cart %}
+
+                            
+                            <tr>
+                            {% for k in key %}
+                            
+                                {%if k != 'tflag'%}
+                                    <td>{{record[k]}}</td>
+                                {%endif%}
+                            
+                            {%endfor%} 
+                            <td colspan="2">
+                                <form method = 'post' class = 'form-register'>
+                                <input type="hidden" id = "{{record.Order_No}}" name="cart" value="{{ record }}">                    
+                                <div class="row">
+                                    <!-- <div class="col" style="display: flex;">        
+                                        <a class="btn btn-sm btn-success" href="{{ url_for('order_details', cart = record.Order_No, house = record.House, ordertype = record.OrderType) }}">ADD Order</a>
+                                    </div> -->
+                                    <div class="col" style="margin-top: 2px;">                                        
+                                        <a href="{{ url_for('cart_page', cart = record.Order_No) }}" class="btn btn-sm btn-warning">Cart</a>
+                                    </div>
+                                    <div class="col" style="margin-top: 2px;">                                        
+                                        <a href="#" class="btn btn-sm btn-info">Checkout</a>
+                                    </div>
+                                </div>
+                                </form>
+                            </td>     
+                               
+                                                       
+                        </tr>            
+                        {%endfor%}
+                    </tbody>
+                </table>
+                <br>
+    </div>
+  </div>
+          
+
+
+{% endblock %}
